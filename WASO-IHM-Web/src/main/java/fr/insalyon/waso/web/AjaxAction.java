@@ -137,8 +137,12 @@ public class AjaxAction {
     }
 
     void rechercherClientParDenomination(String denomination, String ville) throws ServiceException {
-
-        // ...
+        if(true){
+            
+        }
+        if(false){
+            
+        }
     }
 
     void rechercherClientParNomPersonne(String nomPersonne, String ville) throws ServiceException {
