@@ -62,9 +62,9 @@ public class ServiceObjetMetier {
             List<Object[]> listeClients;
             
             if(ville.isEmpty())
-                listeClients = this.dBConnection.launchQuery("SELECT ClientID, TypeClient, Denomination, Adresse, Ville FROM CLIENT where Denomination like %?%", denomClient);
+                listeClients = this.dBConnection.launchQuery("SELECT ClientID, TypeClient, Denomination, Adresse, Ville FROM CLIENT where Denomination =?", denomClient);
             else
-                listeClients = this.dBConnection.launchQuery("SELECT ClientID, TypeClient, Denomination, Adresse, Ville FROM CLIENT where Denomination like %?% and Ville like %?%", denomClient, ville);
+                listeClients = this.dBConnection.launchQuery("SELECT ClientID, TypeClient, Denomination, Adresse, Ville FROM CLIENT where Denomination like '%?%' and Ville like '%?%'", denomClient, ville);
 
             for (Object[] row : listeClients) {
                 JsonObject jsonItem = new JsonObject();
