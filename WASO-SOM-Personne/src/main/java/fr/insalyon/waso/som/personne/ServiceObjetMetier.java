@@ -44,5 +44,33 @@ public class ServiceObjetMetier {
             throw new ServiceException("Exception in SOM getListePersonne", ex);
         }
     }
+    
+    public void getPersonneByID(int idPersonne) throws ServiceException {
+        try {
+            List<Object[]> listePersonne = this.dBConnection.launchQuery("SELECT PersonneID, Nom, Prenom, Mail FROM PERSONNE where  PersonneID=?", idPersonne);
+
+            JsonObject jsonItem = new JsonObject();
+            if(listePersonne.isEmpty()) {
+                this.container.addProperty("error", "not found");
+            }
+            else {
+                for (Object[] row : listePersonne) {
+                jsonItem.addProperty("id", (Integer) row[0]);
+                jsonItem.addProperty("nom", (String) row[1]);
+                jsonItem.addProperty("prenom", (String) row[2]);
+                jsonItem.addProperty("mail", (String) row[3]);
+                break;
+                }
+                
+                this.container.add("personne", jsonItem);
+            }
+
+            
+
+        } catch (DBException ex) {
+            throw new ServiceException("Exception in SOM getListePersonne", ex);
+        }
+    }
+    
 
 }
