@@ -24,3 +24,6 @@ hs_err_pid*
 # Config Files for Windows from moodle
 copy-maven-settings.bat
 settings.xml
+
+#target
+*/target/*?
